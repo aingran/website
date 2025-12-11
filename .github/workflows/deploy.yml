@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages-ccm-ui'
+  group: 'pages-ccm-website'
   cancel-in-progress: true
 
 jobs:
