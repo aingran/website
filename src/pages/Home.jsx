@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
 	Shield,
@@ -20,6 +21,7 @@ import {
 import FeatureCard from '../components/FeatureCard'
 import Testimonial from '../components/Testimonial'
 import dashboardImg from '../assets/images/dashboard.png'
+import ImageModal from '../components/ImageModal'
 import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
@@ -73,6 +75,8 @@ const integrations = [
 ]
 
 function Home() {
+	const [isModalOpen, setIsModalOpen] = useState(false)
+
 	return (
 		<div className="page home-page">
 			{/* Hero Section */}
@@ -106,7 +110,7 @@ function Home() {
 						</div>
 					</div>
 					<div className="hero-visual">
-						<div className="hero-dashboard">
+						<div className="hero-dashboard" onClick={() => setIsModalOpen(true)} style={{ cursor: 'pointer' }}>
 							<img
 								src={dashboardImg}
 								alt="Aingran CCM Dashboard"
@@ -118,6 +122,13 @@ function Home() {
 					</div>
 				</div>
 			</section>
+
+			<ImageModal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				imageSrc={dashboardImg}
+				altText="Aingran CCM Dashboard"
+			/>
 
 			{/* Social Proof */}
 			<section className="section social-proof">

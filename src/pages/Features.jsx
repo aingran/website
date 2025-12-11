@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
 	Shield,
@@ -18,6 +19,7 @@ import violationQueueImg from '../assets/images/violation_queue.png'
 import reportingImg from '../assets/images/reporting.png'
 import userManagementImg from '../assets/images/user_management.png'
 import dashboardImg from '../assets/images/dashboard.png'
+import ImageModal from '../components/ImageModal'
 
 const features = [
 	{
@@ -113,6 +115,16 @@ const features = [
 ]
 
 function Features() {
+	const [modalImage, setModalImage] = useState(null)
+
+	const openModal = (imgSrc) => {
+		setModalImage(imgSrc)
+	}
+
+	const closeModal = () => {
+		setModalImage(null)
+	}
+
 	return (
 		<div className="page features-page">
 			{/* Hero */}
@@ -149,7 +161,11 @@ function Features() {
 									</ul>
 								</div>
 								<div className="feature-visual">
-									<div className="feature-image-container">
+									<div
+										className="feature-image-container"
+										onClick={() => openModal(feature.image)}
+										style={{ cursor: 'pointer' }}
+									>
 										<img
 											src={feature.image}
 											alt={feature.title}
@@ -162,6 +178,13 @@ function Features() {
 					</div>
 				</div>
 			</section>
+
+			<ImageModal
+				isOpen={!!modalImage}
+				onClose={closeModal}
+				imageSrc={modalImage}
+				altText="Feature Preview"
+			/>
 
 			{/* CTA */}
 			<section className="section">
