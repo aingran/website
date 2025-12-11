@@ -80,25 +80,26 @@
 	justify-content: center;
 }
 
-.feature-card-preview {
+.feature-image-container {
 	width: 100%;
-	max-width: 400px;
-	aspect-ratio: 4 / 3;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: var(--spacing-md);
+	max-width: 500px;
 	background: var(--color-bg-card);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-xl);
-	color: var(--color-text-primary);
-	font-size: var(--font-size-lg);
-	font-weight: 500;
+	overflow: hidden;
+	box-shadow: var(--shadow-xl);
+	line-height: 0;
 }
 
-.preview-icon {
-	color: var(--color-accent-primary);
+.feature-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.feature-block:hover .feature-image {
+	transform: scale(1.02);
 }
 
 .features-cta {

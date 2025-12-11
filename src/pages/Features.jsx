@@ -12,6 +12,12 @@ import {
 	CheckCircle2
 } from 'lucide-react'
 import './Features.css'
+import controlDefinitionImg from '../assets/images/control_definition.png'
+import evidenceRepositoryImg from '../assets/images/evidence_repository.png'
+import violationQueueImg from '../assets/images/violation_queue.png'
+import reportingImg from '../assets/images/reporting.png'
+import userManagementImg from '../assets/images/user_management.png'
+import dashboardImg from '../assets/images/dashboard.png'
 
 const features = [
 	{
@@ -19,6 +25,7 @@ const features = [
 		icon: Shield,
 		title: 'Control Definition',
 		description: 'Create, assign, and version controls with structured metadata.',
+		image: controlDefinitionImg,
 		details: [
 			'Owner, reviewer, and frequency assignments',
 			'Success criteria definitions',
@@ -33,6 +40,7 @@ const features = [
 		icon: Database,
 		title: 'Evidence Repository',
 		description: 'Automated collection with full audit trail.',
+		image: evidenceRepositoryImg,
 		details: [
 			'Automated collection from integrations',
 			'Manual uploads with templates',
@@ -47,6 +55,7 @@ const features = [
 		icon: AlertTriangle,
 		title: 'Violation Queue',
 		description: 'Real-time detection with prioritized triage.',
+		image: violationQueueImg,
 		details: [
 			'Real-time detection feeds',
 			'Priority-based queuing',
@@ -61,6 +70,7 @@ const features = [
 		icon: Bell,
 		title: 'Notifications',
 		description: 'Stay informed with intelligent alerts.',
+		image: dashboardImg,
 		details: [
 			'Control owner subscriptions',
 			'Auditor notifications',
@@ -75,6 +85,7 @@ const features = [
 		icon: BarChart3,
 		title: 'Dashboard & Reporting',
 		description: 'Real-time visibility into compliance posture.',
+		image: reportingImg,
 		details: [
 			'Posture score by framework and domain',
 			'Evidence freshness trends',
@@ -89,6 +100,7 @@ const features = [
 		icon: Users,
 		title: 'User & Role Management',
 		description: 'Enterprise-grade access controls.',
+		image: userManagementImg,
 		details: [
 			'SSO/SAML/OIDC support',
 			'SCIM provisioning',
@@ -137,9 +149,12 @@ function Features() {
 									</ul>
 								</div>
 								<div className="feature-visual">
-									<div className="feature-card-preview">
-										<feature.icon size={48} className="preview-icon" />
-										<span>{feature.title}</span>
+									<div className="feature-image-container">
+										<img
+											src={feature.image}
+											alt={feature.title}
+											className="feature-image"
+										/>
 									</div>
 								</div>
 							</div>

@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import FeatureCard from '../components/FeatureCard'
 import Testimonial from '../components/Testimonial'
+import dashboardImg from '../assets/images/dashboard.png'
 import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
@@ -106,26 +107,13 @@ function Home() {
 					</div>
 					<div className="hero-visual">
 						<div className="hero-dashboard">
-							<div className="dashboard-header">
-								<div className="dashboard-dots">
-									<span></span><span></span><span></span>
-								</div>
-								<span>Aingran CCM Dashboard</span>
-							</div>
-							<div className="dashboard-content">
-								<div className="dashboard-stat">
-									<span className="stat-value gradient-text">98%</span>
-									<span className="stat-label">Compliance Score</span>
-								</div>
-								<div className="dashboard-stat">
-									<span className="stat-value">142</span>
-									<span className="stat-label">Controls Active</span>
-								</div>
-								<div className="dashboard-stat">
-									<span className="stat-value success">3</span>
-									<span className="stat-label">Open Violations</span>
-								</div>
-							</div>
+							<img
+								src={dashboardImg}
+								alt="Aingran CCM Dashboard"
+								className="hero-dashboard-img"
+								width="800"
+								height="600"
+							/>
 						</div>
 					</div>
 				</div>
