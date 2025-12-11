@@ -1,0 +1,143 @@
+.features-page {
+	padding-top: 72px;
+}
+
+.features-hero {
+	padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+	text-align: center;
+}
+
+.features-hero h1 {
+	font-size: var(--font-size-5xl);
+	margin-bottom: var(--spacing-md);
+}
+
+.features-hero p {
+	font-size: var(--font-size-xl);
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.features-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-4xl);
+}
+
+.feature-block {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--spacing-3xl);
+	align-items: center;
+}
+
+.feature-block.reverse {
+	direction: rtl;
+}
+
+.feature-block.reverse>* {
+	direction: ltr;
+}
+
+.feature-content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.feature-content h2 {
+	font-size: var(--font-size-3xl);
+	margin-bottom: var(--spacing-md);
+}
+
+.feature-description {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--spacing-lg);
+}
+
+.feature-details {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+}
+
+.feature-details li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--spacing-sm);
+	color: var(--color-text-secondary);
+}
+
+.feature-details li svg {
+	flex-shrink: 0;
+	color: var(--color-success);
+	margin-top: 2px;
+}
+
+.feature-visual {
+	display: flex;
+	justify-content: center;
+}
+
+.feature-card-preview {
+	width: 100%;
+	max-width: 400px;
+	aspect-ratio: 4 / 3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing-md);
+	background: var(--color-bg-card);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	color: var(--color-text-primary);
+	font-size: var(--font-size-lg);
+	font-weight: 500;
+}
+
+.preview-icon {
+	color: var(--color-accent-primary);
+}
+
+.features-cta {
+	text-align: center;
+	padding: var(--spacing-3xl);
+}
+
+.features-cta h2 {
+	margin-bottom: var(--spacing-md);
+}
+
+.features-cta p {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--spacing-xl);
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+
+	.feature-block,
+	.feature-block.reverse {
+		grid-template-columns: 1fr;
+		direction: ltr;
+	}
+
+	.feature-visual {
+		order: -1;
+	}
+
+	.feature-content {
+		align-items: center;
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.features-hero h1 {
+		font-size: var(--font-size-4xl);
+	}
+}

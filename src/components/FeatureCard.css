@@ -1,0 +1,15 @@
+.feature-card {
+	text-align: left;
+}
+
+.feature-card-title {
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	margin-bottom: var(--spacing-sm);
+}
+
+.feature-card-description {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-muted);
+	line-height: 1.6;
+}

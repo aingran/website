@@ -1,0 +1,145 @@
+.integrations-page {
+	padding-top: 72px;
+}
+
+.integrations-hero {
+	padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+	text-align: center;
+}
+
+.integrations-hero h1 {
+	font-size: var(--font-size-5xl);
+	margin-bottom: var(--spacing-md);
+}
+
+.integrations-hero p {
+	font-size: var(--font-size-xl);
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.integration-categories {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-4xl);
+}
+
+.integration-category {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xl);
+}
+
+.category-header {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-lg);
+}
+
+.category-header h2 {
+	font-size: var(--font-size-2xl);
+	margin-bottom: var(--spacing-xs);
+}
+
+.category-header p {
+	font-size: var(--font-size-base);
+	color: var(--color-text-muted);
+}
+
+.category-integrations {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: var(--spacing-md);
+}
+
+.integration-item {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-md);
+	padding: var(--spacing-lg);
+}
+
+.integration-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	background: var(--color-bg-glass);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	color: var(--color-accent-primary);
+}
+
+.integration-info {
+	flex-grow: 1;
+}
+
+.integration-info h4 {
+	font-size: var(--font-size-base);
+	margin-bottom: var(--spacing-xs);
+}
+
+.integration-info p {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-muted);
+}
+
+.integration-check {
+	flex-shrink: 0;
+	color: var(--color-success);
+}
+
+/* Custom Integration */
+.custom-integration {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-3xl);
+	background: var(--color-bg-card);
+}
+
+.custom-integration-content h2 {
+	margin-bottom: var(--spacing-sm);
+}
+
+.custom-integration-content p {
+	font-size: var(--font-size-lg);
+	max-width: 600px;
+	margin-bottom: var(--spacing-lg);
+}
+
+.custom-features {
+	display: flex;
+	gap: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+	.integrations-hero h1 {
+		font-size: var(--font-size-4xl);
+	}
+
+	.category-header {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.custom-integration {
+		flex-direction: column;
+		text-align: center;
+		gap: var(--spacing-xl);
+	}
+
+	.custom-integration-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.custom-features {
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}
