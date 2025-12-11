@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 // base becomes '/<repo>/' so assets resolve correctly.
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')?.[1]
 const isCI = !!process.env.GITHUB_ACTIONS
-const base = isCI && repoName && !repoName.endsWith('.github.io') ? `/${repoName}/` : '/'
+const base = repoName ? `/${repoName}/` : '/'
 
 export default defineConfig({
   base,
