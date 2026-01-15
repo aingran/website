@@ -8,6 +8,7 @@ import {
 	CheckCircle2,
 	ArrowRight
 } from 'lucide-react'
+import ScrollReveal from '../components/ScrollReveal'
 import './Solutions.css'
 
 const frameworks = [
@@ -154,24 +155,26 @@ function Solutions() {
 					{activeTab === 'frameworks' && (
 						<div className="tab-content">
 							<div className="frameworks-grid">
-								{frameworks.map((framework) => (
-									<div key={framework.id} className="framework-card card">
-										<div className="framework-header">
-											<h3>{framework.name}</h3>
-											<span className="framework-desc">{framework.description}</span>
+								{frameworks.map((framework, index) => (
+									<ScrollReveal key={framework.id} delay={index * 100} className="h-100">
+										<div className="framework-card card h-100">
+											<div className="framework-header">
+												<h3>{framework.name}</h3>
+												<span className="framework-desc">{framework.description}</span>
+											</div>
+											<ul className="framework-details">
+												{framework.details.map((detail) => (
+													<li key={detail}>
+														<CheckCircle2 size={16} />
+														<span>{detail}</span>
+													</li>
+												))}
+											</ul>
+											<Link to="/contact" className="btn btn-secondary">
+												Learn More
+											</Link>
 										</div>
-										<ul className="framework-details">
-											{framework.details.map((detail) => (
-												<li key={detail}>
-													<CheckCircle2 size={16} />
-													<span>{detail}</span>
-												</li>
-											))}
-										</ul>
-										<Link to="/contact" className="btn btn-secondary">
-											Learn More
-										</Link>
-									</div>
+									</ScrollReveal>
 								))}
 							</div>
 						</div>
@@ -181,22 +184,24 @@ function Solutions() {
 					{activeTab === 'teams' && (
 						<div className="tab-content">
 							<div className="teams-grid">
-								{teams.map((team) => (
-									<div key={team.id} className="team-card card">
-										<div className="icon-box">
-											<team.icon size={24} />
+								{teams.map((team, index) => (
+									<ScrollReveal key={team.id} delay={index * 100} className="h-100">
+										<div className="team-card card h-100">
+											<div className="icon-box">
+												<team.icon size={24} />
+											</div>
+											<h3>{team.name}</h3>
+											<p className="team-description">{team.description}</p>
+											<ul className="team-benefits">
+												{team.benefits.map((benefit) => (
+													<li key={benefit}>
+														<CheckCircle2 size={16} />
+														<span>{benefit}</span>
+													</li>
+												))}
+											</ul>
 										</div>
-										<h3>{team.name}</h3>
-										<p className="team-description">{team.description}</p>
-										<ul className="team-benefits">
-											{team.benefits.map((benefit) => (
-												<li key={benefit}>
-													<CheckCircle2 size={16} />
-													<span>{benefit}</span>
-												</li>
-											))}
-										</ul>
-									</div>
+									</ScrollReveal>
 								))}
 							</div>
 						</div>

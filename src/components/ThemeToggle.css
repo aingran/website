@@ -1,0 +1,25 @@
+.theme-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid var(--color-border);
+	background: var(--color-bg-glass);
+	color: var(--color-text-primary);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: var(--color-border-hover);
+	transform: scale(1.05);
+	color: var(--color-accent-secondary);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+	background: rgba(0, 0, 0, 0.05);
+}

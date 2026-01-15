@@ -12,6 +12,7 @@ import {
 	ArrowRight,
 	CheckCircle2
 } from 'lucide-react'
+import ScrollReveal from '../components/ScrollReveal'
 import './Features.css'
 import controlDefinitionImg from '../assets/images/control_definition.png'
 import evidenceRepositoryImg from '../assets/images/evidence_repository.png'
@@ -140,40 +141,41 @@ function Features() {
 				<div className="container">
 					<div className="features-list">
 						{features.map((feature, index) => (
-							<div
-								key={feature.id}
-								id={feature.id}
-								className={`feature-block ${index % 2 === 1 ? 'reverse' : ''}`}
-							>
-								<div className="feature-content">
-									<div className="icon-box icon-box-lg">
-										<feature.icon size={28} />
+							<ScrollReveal key={feature.id}>
+								<div
+									id={feature.id}
+									className={`feature-block ${index % 2 === 1 ? 'reverse' : ''}`}
+								>
+									<div className="feature-content">
+										<div className="icon-box icon-box-lg">
+											<feature.icon size={28} />
+										</div>
+										<h2>{feature.title}</h2>
+										<p className="feature-description">{feature.description}</p>
+										<ul className="feature-details">
+											{feature.details.map((detail) => (
+												<li key={detail}>
+													<CheckCircle2 size={18} />
+													<span>{detail}</span>
+												</li>
+											))}
+										</ul>
 									</div>
-									<h2>{feature.title}</h2>
-									<p className="feature-description">{feature.description}</p>
-									<ul className="feature-details">
-										{feature.details.map((detail) => (
-											<li key={detail}>
-												<CheckCircle2 size={18} />
-												<span>{detail}</span>
-											</li>
-										))}
-									</ul>
-								</div>
-								<div className="feature-visual">
-									<div
-										className="feature-image-container"
-										onClick={() => openModal(feature.image)}
-										style={{ cursor: 'pointer' }}
-									>
-										<img
-											src={feature.image}
-											alt={feature.title}
-											className="feature-image"
-										/>
+									<div className="feature-visual">
+										<div
+											className="feature-image-container"
+											onClick={() => openModal(feature.image)}
+											style={{ cursor: 'pointer' }}
+										>
+											<img
+												src={feature.image}
+												alt={feature.title}
+												className="feature-image"
+											/>
+										</div>
 									</div>
 								</div>
-							</div>
+							</ScrollReveal>
 						))}
 					</div>
 				</div>

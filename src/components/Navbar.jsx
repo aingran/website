@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Shield } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 import './Navbar.css'
 
 const navLinks = [
@@ -47,6 +48,7 @@ function Navbar() {
 						<Link to="/contact" className="btn btn-primary" onClick={() => setIsOpen(false)}>
 							Start Free
 						</Link>
+						<ThemeToggle />
 					</div>
 				</div>
 
