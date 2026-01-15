@@ -102,8 +102,19 @@ const HowItWorksFactory = () => {
 	const [activeStage, setActiveStage] = useState(0)
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [isVisible, setIsVisible] = useState(false)
+	const [isMobile, setIsMobile] = useState(false)
 	const containerRef = useRef(null)
 	const intervalRef = useRef(null)
+
+	// Mobile detection
+	useEffect(() => {
+		const checkMobile = () => {
+			setIsMobile(window.innerWidth <= 768)
+		}
+		checkMobile()
+		window.addEventListener('resize', checkMobile)
+		return () => window.removeEventListener('resize', checkMobile)
+	}, [])
 
 	// Auto-progress through stages
 	useEffect(() => {
@@ -202,6 +213,77 @@ const HowItWorksFactory = () => {
 
 					{/* Stage Stations */}
 					<div className="assembly-stations">
+						{/* Mobile S-Curve Path */}
+						{isMobile && (
+							<svg className="mobile-s-curve-path" viewBox="0 0 320 700" preserveAspectRatio="none">
+								<defs>
+									<linearGradient id="sCurveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+										<stop offset="0%" stopColor="#6366f1" stopOpacity="0.8" />
+										<stop offset="25%" stopColor="#8b5cf6" stopOpacity="0.8" />
+										<stop offset="50%" stopColor="#06b6d4" stopOpacity="0.8" />
+										<stop offset="75%" stopColor="#ec4899" stopOpacity="0.8" />
+										<stop offset="100%" stopColor="#22c55e" stopOpacity="0.8" />
+									</linearGradient>
+									<filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+										<feGaussianBlur stdDeviation="3" result="blur" />
+										<feComposite in="SourceGraphic" in2="blur" operator="over" />
+									</filter>
+								</defs>
+								{/* S-Curve Path */}
+								<path
+									d="M 50 50 
+									   C 50 70, 50 80, 100 100 
+									   L 270 100 
+									   C 290 100, 290 120, 290 150
+									   C 290 180, 290 200, 220 200 
+									   L 50 200 
+									   C 30 200, 30 220, 30 250
+									   C 30 280, 30 300, 100 300 
+									   L 270 300 
+									   C 290 300, 290 320, 290 350
+									   C 290 380, 290 400, 220 400 
+									   L 50 400 
+									   C 30 400, 30 420, 30 450
+									   C 30 480, 30 500, 100 500 
+									   L 270 500 
+									   C 290 500, 290 520, 290 550
+									   C 290 580, 290 600, 220 600 
+									   L 160 600
+									   C 140 600, 140 620, 160 650"
+									fill="none"
+									stroke="url(#sCurveGradient)"
+									strokeWidth="4"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									filter="url(#glowFilter)"
+									className="s-curve-line"
+								/>
+								{/* Animated particles along the path */}
+								<circle r="6" fill="#6366f1" className="path-particle">
+									<animateMotion
+										dur="6s"
+										repeatCount="indefinite"
+										path="M 50 50 C 50 70, 50 80, 100 100 L 270 100 C 290 100, 290 120, 290 150 C 290 180, 290 200, 220 200 L 50 200 C 30 200, 30 220, 30 250 C 30 280, 30 300, 100 300 L 270 300 C 290 300, 290 320, 290 350 C 290 380, 290 400, 220 400 L 50 400 C 30 400, 30 420, 30 450 C 30 480, 30 500, 100 500 L 270 500 C 290 500, 290 520, 290 550 C 290 580, 290 600, 220 600 L 160 600 C 140 600, 140 620, 160 650"
+									/>
+								</circle>
+								<circle r="5" fill="#06b6d4" className="path-particle">
+									<animateMotion
+										dur="6s"
+										repeatCount="indefinite"
+										begin="2s"
+										path="M 50 50 C 50 70, 50 80, 100 100 L 270 100 C 290 100, 290 120, 290 150 C 290 180, 290 200, 220 200 L 50 200 C 30 200, 30 220, 30 250 C 30 280, 30 300, 100 300 L 270 300 C 290 300, 290 320, 290 350 C 290 380, 290 400, 220 400 L 50 400 C 30 400, 30 420, 30 450 C 30 480, 30 500, 100 500 L 270 500 C 290 500, 290 520, 290 550 C 290 580, 290 600, 220 600 L 160 600 C 140 600, 140 620, 160 650"
+									/>
+								</circle>
+								<circle r="4" fill="#ec4899" className="path-particle">
+									<animateMotion
+										dur="6s"
+										repeatCount="indefinite"
+										begin="4s"
+										path="M 50 50 C 50 70, 50 80, 100 100 L 270 100 C 290 100, 290 120, 290 150 C 290 180, 290 200, 220 200 L 50 200 C 30 200, 30 220, 30 250 C 30 280, 30 300, 100 300 L 270 300 C 290 300, 290 320, 290 350 C 290 380, 290 400, 220 400 L 50 400 C 30 400, 30 420, 30 450 C 30 480, 30 500, 100 500 L 270 500 C 290 500, 290 520, 290 550 C 290 580, 290 600, 220 600 L 160 600 C 140 600, 140 620, 160 650"
+									/>
+								</circle>
+							</svg>
+						)}
 						{assemblyStages.map((stage, index) => {
 							const StageIcon = stage.icon
 							const isActive = index === activeStage
@@ -236,7 +318,7 @@ const HowItWorksFactory = () => {
 									<span className="station-label">{stage.title.split(' ')[0]}</span>
 
 									{/* Connection line to next station */}
-									{index < assemblyStages.length - 1 && (
+									{index < assemblyStages.length - 1 && !isMobile && (
 										<div className={`station-connector ${isPast ? 'active' : ''}`}>
 											<ArrowRight size={16} />
 										</div>

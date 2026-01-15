@@ -1173,41 +1173,278 @@
 }
 
 @media (max-width: 768px) {
-	.assembly-stations {
-		flex-wrap: wrap;
-		gap: var(--spacing-lg);
-		justify-content: center;
+	.assembly-line-container {
+		padding: var(--spacing-lg) 0;
+		position: relative;
 	}
 
-	.station-connector {
-		display: none;
-	}
-
+	/* Hide horizontal conveyor belt on mobile */
 	.conveyor-belt {
 		display: none;
 	}
 
-	.assembly-line-container {
-		padding-top: 0;
-	}
-
+	/* S-Curve Mobile Assembly Line */
 	.assembly-stations {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
 		margin-top: 0;
+		padding: 0 var(--spacing-md);
+		position: relative;
+		max-width: 100%;
 	}
 
+	/* SVG S-curve path background */
+	.mobile-s-curve-path {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.assembly-station {
+		position: relative;
+		z-index: 2;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--spacing-md);
+		padding: var(--spacing-md) 0;
+		width: 100%;
+	}
+
+	/* Alternating left-right positions for S-shape */
+	.assembly-station:nth-child(odd) {
+		justify-content: flex-start;
+		padding-left: var(--spacing-lg);
+	}
+
+	.assembly-station:nth-child(even) {
+		justify-content: flex-end;
+		flex-direction: row-reverse;
+		padding-right: var(--spacing-lg);
+	}
+
+	/* Station head adjustments for mobile */
+	.assembly-station .station-head {
+		width: 56px;
+		height: 56px;
+		flex-shrink: 0;
+	}
+
+	.assembly-station .station-icon {
+		width: 56px;
+		height: 56px;
+	}
+
+	/* Station pillar becomes horizontal connector line */
+	.assembly-station .station-pillar {
+		display: none;
+	}
+
+	/* Station label appears inline on mobile */
+	.assembly-station .station-label {
+		margin-top: 0;
+		font-size: 0.8rem;
+		padding: 0.35rem 0.75rem;
+		max-width: 120px;
+		white-space: normal;
+		text-align: center;
+		line-height: 1.2;
+	}
+
+	/* Hide horizontal connector arrows */
+	.station-connector {
+		display: none;
+	}
+
+	/* Mobile S-curve connecting lines */
+	.assembly-station::before {
+		content: '';
+		position: absolute;
+		width: 4px;
+		background: linear-gradient(180deg, var(--station-color), var(--color-border));
+		border-radius: 2px;
+		z-index: 1;
+	}
+
+	/* Vertical lines connecting to next station */
+	.assembly-station:not(:last-child)::before {
+		bottom: -5px;
+		height: calc(100% - 30px);
+	}
+
+	/* Odd stations: line extends from right side, curves down */
+	.assembly-station:nth-child(odd):not(:last-child)::before {
+		left: calc(var(--spacing-lg) + 28px);
+		transform: translateX(-50%);
+	}
+
+	/* Even stations: line extends from left side, curves down */
+	.assembly-station:nth-child(even):not(:last-child)::before {
+		right: calc(var(--spacing-lg) + 28px);
+		transform: translateX(50%);
+	}
+
+	/* Horizontal curve connectors */
+	.assembly-station::after {
+		content: '';
+		position: absolute;
+		height: 4px;
+		background: linear-gradient(90deg, var(--station-color), var(--color-border));
+		border-radius: 2px;
+		bottom: 0;
+		z-index: 1;
+	}
+
+	/* Odd stations (except first): horizontal line from left edge to station */
+	.assembly-station:nth-child(odd):not(:first-child)::after {
+		left: 0;
+		width: calc(var(--spacing-lg) + 28px);
+	}
+
+	/* Even stations: horizontal line from station to right edge */
+	.assembly-station:nth-child(even):not(:last-child)::after {
+		right: 0;
+		width: calc(100% - var(--spacing-lg) - 28px);
+	}
+
+	/* Animated flow particles along the S-curve */
+	.assembly-station.active::before,
+	.assembly-station.active::after {
+		background: linear-gradient(180deg, var(--station-color), var(--station-color));
+		box-shadow: 0 0 10px var(--station-color);
+	}
+
+	.assembly-station.completed::before,
+	.assembly-station.completed::after {
+		background: linear-gradient(180deg, #22c55e, rgba(34, 197, 94, 0.3));
+	}
+
+	/* Stage detail panel adjustments */
 	.stage-detail-panel {
 		padding: var(--spacing-lg);
+		margin-top: var(--spacing-lg);
 	}
 
 	.viz-connect,
 	.viz-signals,
 	.viz-ai,
-	.viz-human {
+	.viz-human,
+	.viz-evidence {
 		flex-direction: column;
 		width: 100%;
 	}
 
 	.progress-segment {
-		width: 40px;
+		width: 32px;
+	}
+
+	/* Mobile stage info adjustments */
+	.stage-header {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.stage-title-section {
+		text-align: center;
+	}
+
+	.stage-description {
+		text-align: center;
+	}
+
+	/* Mobile S-Curve SVG Path Styles */
+	.mobile-s-curve-path {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		opacity: 0.6;
+	}
+
+	.s-curve-line {
+		stroke-dasharray: 10 5;
+		animation: dashFlow 2s linear infinite;
+	}
+
+	@keyframes dashFlow {
+		from {
+			stroke-dashoffset: 0;
+		}
+
+		to {
+			stroke-dashoffset: -30;
+		}
+	}
+
+	.path-particle {
+		filter: drop-shadow(0 0 8px currentColor);
+		opacity: 0.9;
+	}
+
+	/* Enhanced station styles for mobile S-curve layout */
+	.assembly-station {
+		backdrop-filter: blur(8px);
+		background: rgba(15, 15, 20, 0.4);
+		border-radius: var(--radius-xl);
+		padding: var(--spacing-md) !important;
+		margin: var(--spacing-sm) 0;
+		border: 1px solid rgba(99, 102, 241, 0.2);
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.assembly-station:hover {
+		background: rgba(15, 15, 20, 0.6);
+		border-color: var(--station-color);
+		transform: scale(1.02);
+	}
+
+	.assembly-station.active {
+		background: rgba(99, 102, 241, 0.15);
+		border-color: var(--station-color);
+		box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+	}
+
+	/* Remove pseudo-element connectors when using SVG path */
+	.assembly-station::before,
+	.assembly-station::after {
+		display: none;
+	}
+}
+
+/* Extra small mobile adjustments */
+@media (max-width: 480px) {
+	.assembly-station .station-label {
+		font-size: 0.7rem;
+		max-width: 100px;
+	}
+
+	.assembly-station .station-head {
+		width: 48px;
+		height: 48px;
+	}
+
+	.assembly-station .station-icon {
+		width: 48px;
+		height: 48px;
+	}
+
+	.factory-header h2 {
+		font-size: var(--font-size-2xl);
+	}
+
+	.factory-header p {
+		font-size: var(--font-size-base);
+	}
+
+	.progress-segment {
+		width: 24px;
 	}
 }
