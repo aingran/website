@@ -31,6 +31,7 @@ import ImageModal from '../components/ImageModal'
 import ScrollReveal from '../components/ScrollReveal'
 import ChallengesShowcase from '../components/ChallengesShowcase'
 import OnePlatformShowcase from '../components/OnePlatformShowcase'
+import HowItWorksFactory from '../components/HowItWorksFactory'
 import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
@@ -264,31 +265,8 @@ function Home() {
 				</div>
 			</section>
 
-			{/* How it Works */}
-			<section className="section how-it-works">
-				<div className="container">
-					<div className="section-header">
-						<h2>How it works</h2>
-						<p>Get from zero to audit-ready in five simple steps.</p>
-					</div>
-					<div className="steps-container">
-						{howItWorks.map((item, index) => (
-							<div key={item.step} className="step-item">
-								<div className="step-number">{item.step}</div>
-								<div className="step-content">
-									<h3>{item.title}</h3>
-									<p>{item.description}</p>
-								</div>
-								{index < howItWorks.length - 1 && (
-									<div className="step-connector">
-										<ArrowRight size={20} />
-									</div>
-								)}
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+			{/* How it Works - Assembly Line */}
+			<HowItWorksFactory />
 
 			{/* Capabilities */}
 			<section className="section">
