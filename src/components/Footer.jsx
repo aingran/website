@@ -12,8 +12,8 @@ const productLinks = [
 const companyLinks = [
 	{ path: '#testimonials', label: 'Testimonials' },
 	{ path: '#contact', label: 'Contact' },
-	{ path: '#', label: 'Privacy Policy' },
-	{ path: '#', label: 'Terms of Service' },
+	{ path: '/privacy', label: 'Privacy Policy' },
+	{ path: '/terms', label: 'Terms of Service' },
 ]
 
 const frameworkLinks = [
@@ -94,7 +94,11 @@ function Footer() {
 						<ul className="footer-links">
 							{companyLinks.map((link) => (
 								<li key={link.label}>
-									<a href={link.path} onClick={(e) => handleNavClick(e, link.path)}>{link.label}</a>
+									{link.path.startsWith('/') ? (
+										<Link to={link.path}>{link.label}</Link>
+									) : (
+										<a href={link.path} onClick={(e) => handleNavClick(e, link.path)}>{link.label}</a>
+									)}
 								</li>
 							))}
 						</ul>

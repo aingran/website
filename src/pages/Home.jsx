@@ -1,18 +1,22 @@
 import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Testimonial from '../components/Testimonial'
-import dashboardImg from '../assets/images/dashboard.png'
+import dashboardDark from '../assets/images/dashboard.png'
+import dashboardLight from '../assets/images/dashboard_light.png'
 import ImageModal from '../components/ImageModal'
 import ChallengesShowcase from '../components/ChallengesShowcase'
 import OnePlatformShowcase from '../components/OnePlatformShowcase'
 import HowItWorksFactory from '../components/HowItWorksFactory'
 import KeyValueShowcase from '../components/KeyValueShowcase'
+import { useTheme } from '../context/ThemeContext'
 import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
 
 function Home() {
+	const { theme } = useTheme()
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const dashboardImg = theme === 'dark' ? dashboardDark : dashboardLight
 
 	const scrollToSection = (sectionId) => {
 		const element = document.getElementById(sectionId)

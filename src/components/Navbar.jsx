@@ -25,16 +25,28 @@ function Navbar() {
 		}
 	}
 
+	const handleBrandClick = (e) => {
+		e.preventDefault()
+		// If on the home page, scroll to top
+		const heroElement = document.getElementById('hero')
+		if (heroElement) {
+			heroElement.scrollIntoView({ behavior: 'smooth' })
+		} else {
+			// Navigate to home and then scroll to top
+			window.location.href = '/'
+		}
+	}
+
 	return (
 		<nav className="navbar">
 			<div className="container navbar-container">
-				<Link to="/" className="navbar-brand">
+				<a href="/" className="navbar-brand" onClick={handleBrandClick}>
 					<div className="navbar-logo">
 						<Shield size={28} />
 					</div>
 					<span className="navbar-brand-text">Aingran</span>
 					<span className="navbar-product-badge">CCM</span>
-				</Link>
+				</a>
 
 				<div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
 					<ul className="navbar-links">
