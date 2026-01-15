@@ -1,51 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-	ArrowRight,
-	Plug,
-	FileCheck,
-	Users,
-	Layers,
-	AlertTriangle
-} from 'lucide-react'
-import FeatureCard from '../components/FeatureCard'
+import { ArrowRight } from 'lucide-react'
 import Testimonial from '../components/Testimonial'
 import dashboardImg from '../assets/images/dashboard.png'
 import ImageModal from '../components/ImageModal'
 import ChallengesShowcase from '../components/ChallengesShowcase'
 import OnePlatformShowcase from '../components/OnePlatformShowcase'
 import HowItWorksFactory from '../components/HowItWorksFactory'
+import KeyValueShowcase from '../components/KeyValueShowcase'
 import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
-
-const valuePillars = [
-	{
-		icon: Plug,
-		title: 'ERP-agnostic, non-intrusive integration',
-		description: 'Designed to integrate with leading ERPs and source systems using read-only, event-driven data ingestion.'
-	},
-	{
-		icon: AlertTriangle,
-		title: 'Continuous, event-driven control monitoring',
-		description: 'Moves organizations from periodic sampling to always-on control assurance with clear ownership and SLAs.'
-	},
-	{
-		icon: FileCheck,
-		title: 'Audit-ready evidence by design',
-		description: 'Automated evidence capture, immutable audit trails, and traceability aligned to internal audit and regulatory expectations.'
-	},
-	{
-		icon: Users,
-		title: 'Built for enterprise risk, finance, and compliance teams',
-		description: 'Supports Finance Operations, Internal Audit, Risk, Compliance, and IT governance functions at scale.'
-	},
-	{
-		icon: Layers,
-		title: 'Architecture aligned to modern enterprise platforms',
-		description: 'Event-driven, workflow-enabled, and scalable for multi-process and multi-system environments.'
-	}
-]
 
 
 
@@ -113,24 +78,7 @@ function Home() {
 			<HowItWorksFactory />
 
 			{/* Key Value Statements */}
-			<section className="section">
-				<div className="container">
-					<div className="section-header">
-						<h2>Key Value Statements <span className="gradient-text">(Enterprise-focused)</span></h2>
-						<p>Enterprise-grade Continuous Controls Monitoring platform.</p>
-					</div>
-					<div className="grid grid-4">
-						{valuePillars.map((pillar) => (
-							<FeatureCard
-								key={pillar.title}
-								icon={pillar.icon}
-								title={pillar.title}
-								description={pillar.description}
-							/>
-						))}
-					</div>
-				</div>
-			</section>
+			<KeyValueShowcase />
 
 			{/* Social Proof */}
 			<section className="section social-proof">
