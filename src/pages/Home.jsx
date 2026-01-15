@@ -30,6 +30,7 @@ import dashboardImg from '../assets/images/dashboard.png'
 import ImageModal from '../components/ImageModal'
 import ScrollReveal from '../components/ScrollReveal'
 import ChallengesShowcase from '../components/ChallengesShowcase'
+import OnePlatformShowcase from '../components/OnePlatformShowcase'
 import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
@@ -242,40 +243,8 @@ function Home() {
 
 
 
-			{/* Built for Teams */}
-			<section className="section bg-light">
-				<div className="container">
-					<ScrollReveal>
-						<div className="section-header">
-							<h2>One platform. <span className="gradient-text">Shared control visibility.</span></h2>
-							<p>Clear ownership across the enterprise. Built for Teams Who Live with Risk, Controls, and Audits.</p>
-						</div>
-					</ScrollReveal>
-					<div className="teams-grid">
-						{teamsData.map((team, index) => (
-							<ScrollReveal key={team.id} delay={index * 100} className="h-100">
-								<div className="team-card card h-100">
-									<div className="team-header">
-										<team.icon size={32} className="team-icon" />
-										<h3>{team.title}</h3>
-									</div>
-									<div className="team-objective">
-										<strong>Objective:</strong> {team.objective}
-									</div>
-									<ul className="team-features">
-										{team.features.map((feature, idx) => (
-											<li key={idx}>{feature}</li>
-										))}
-									</ul>
-									<div className="team-value">
-										<strong>Business Value:</strong> {team.value}
-									</div>
-								</div>
-							</ScrollReveal>
-						))}
-					</div>
-				</div>
-			</section>
+			{/* One Platform - Built for Teams */}
+			<OnePlatformShowcase />
 
 			{/* Real-world Detections */}
 			<section className="section">
