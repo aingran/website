@@ -3,28 +3,38 @@ import { Shield, Linkedin, Twitter, Github, Mail } from 'lucide-react'
 import './Footer.css'
 
 const productLinks = [
-	{ path: '/features', label: 'Features' },
-	{ path: '/solutions', label: 'Solutions' },
-	{ path: '/pricing', label: 'Pricing' },
-	{ path: '/integrations', label: 'Integrations' },
+	{ path: '#challenges', label: 'Challenges' },
+	{ path: '#platform', label: 'Platform' },
+	{ path: '#how-it-works', label: 'How It Works' },
+	{ path: '#why-ccm', label: 'Why CCM' },
 ]
 
 const companyLinks = [
-	{ path: '/security', label: 'Security & Trust' },
-	{ path: '/contact', label: 'Contact' },
+	{ path: '#testimonials', label: 'Testimonials' },
+	{ path: '#contact', label: 'Contact' },
 	{ path: '#', label: 'Privacy Policy' },
 	{ path: '#', label: 'Terms of Service' },
 ]
 
 const frameworkLinks = [
-	{ path: '/solutions', label: 'SOC 2' },
-	{ path: '/solutions', label: 'ISO 27001' },
-	{ path: '/solutions', label: 'HIPAA' },
-	{ path: '/solutions', label: 'PCI DSS' },
+	{ path: '#challenges', label: 'SOC 2' },
+	{ path: '#challenges', label: 'ISO 27001' },
+	{ path: '#challenges', label: 'HIPAA' },
+	{ path: '#challenges', label: 'PCI DSS' },
 ]
 
 function Footer() {
 	const currentYear = new Date().getFullYear()
+
+	const handleNavClick = (e, path) => {
+		if (path.startsWith('#') && path !== '#') {
+			e.preventDefault()
+			const element = document.getElementById(path.substring(1))
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth' })
+			}
+		}
+	}
 
 	return (
 		<footer className="footer">
@@ -62,7 +72,7 @@ function Footer() {
 						<ul className="footer-links">
 							{productLinks.map((link) => (
 								<li key={link.label}>
-									<Link to={link.path}>{link.label}</Link>
+									<a href={link.path} onClick={(e) => handleNavClick(e, link.path)}>{link.label}</a>
 								</li>
 							))}
 						</ul>
@@ -73,7 +83,7 @@ function Footer() {
 						<ul className="footer-links">
 							{frameworkLinks.map((link) => (
 								<li key={link.label}>
-									<Link to={link.path}>{link.label}</Link>
+									<a href={link.path} onClick={(e) => handleNavClick(e, link.path)}>{link.label}</a>
 								</li>
 							))}
 						</ul>
@@ -84,7 +94,7 @@ function Footer() {
 						<ul className="footer-links">
 							{companyLinks.map((link) => (
 								<li key={link.label}>
-									<Link to={link.path}>{link.label}</Link>
+									<a href={link.path} onClick={(e) => handleNavClick(e, link.path)}>{link.label}</a>
 								</li>
 							))}
 						</ul>

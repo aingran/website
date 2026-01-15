@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import Testimonial from '../components/Testimonial'
 import dashboardImg from '../assets/images/dashboard.png'
@@ -12,15 +11,20 @@ import './Home.css'
 
 const trustBadges = ['SOC 2', 'ISO 27001', 'HIPAA', 'PCI DSS', 'SOX']
 
-
-
 function Home() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	const scrollToSection = (sectionId) => {
+		const element = document.getElementById(sectionId)
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' })
+		}
+	}
 
 	return (
 		<div className="page home-page">
 			{/* Hero Section */}
-			<section className="hero">
+			<section id="hero" className="hero">
 				<div className="container">
 					<div className="hero-content">
 						<div className="hero-badge">
@@ -30,16 +34,16 @@ function Home() {
 							Continuous Controls Monitoring — from periodic checks to continuous enterprise assurance
 						</h1>
 						<p className="hero-subtitle">
-							Aingran’s CCM is an enterprise-grade Continuous Controls Monitoring platform that continuously evaluates critical business and financial controls across core enterprise processes such as Procure-to-Pay and Order-to-Cash, detects exceptions in near real time, and automatically captures audit-ready evidence across ERP and source systems.
+							Aingran's CCM is an enterprise-grade Continuous Controls Monitoring platform that continuously evaluates critical business and financial controls across core enterprise processes such as Procure-to-Pay and Order-to-Cash, detects exceptions in near real time, and automatically captures audit-ready evidence across ERP and source systems.
 						</p>
 						<div className="hero-actions">
-							<Link to="/contact" className="btn btn-primary btn-lg">
+							<a href="#contact" className="btn btn-primary btn-lg">
 								Request a Demo
 								<ArrowRight size={20} />
-							</Link>
-							<Link to="/features" className="btn btn-secondary btn-lg">
+							</a>
+							<a href="#platform" className="btn btn-secondary btn-lg">
 								Explore the Platform
-							</Link>
+							</a>
 						</div>
 						<div className="trust-badges">
 							{trustBadges.map((badge) => (
@@ -69,19 +73,27 @@ function Home() {
 			/>
 
 			{/* Compliance Challenges */}
-			<ChallengesShowcase />
+			<section id="challenges">
+				<ChallengesShowcase />
+			</section>
 
 			{/* One Platform - Built for Teams */}
-			<OnePlatformShowcase />
+			<section id="platform">
+				<OnePlatformShowcase />
+			</section>
 
 			{/* How it Works - Assembly Line */}
-			<HowItWorksFactory />
+			<section id="how-it-works">
+				<HowItWorksFactory />
+			</section>
 
 			{/* Key Value Statements */}
-			<KeyValueShowcase />
+			<section id="why-ccm">
+				<KeyValueShowcase />
+			</section>
 
 			{/* Social Proof */}
-			<section className="section social-proof">
+			<section id="testimonials" className="section social-proof">
 				<div className="container">
 					<p className="social-proof-label">Trusted by security & compliance teams worldwide</p>
 					<div className="testimonial-wrapper">
@@ -96,24 +108,24 @@ function Home() {
 			</section>
 
 			{/* CTA Section */}
-			<section className="section cta-section">
+			<section id="contact" className="section cta-section">
 				<div className="container">
 					<div className="cta-box">
 						<h2>Ready to automate your compliance?</h2>
 						<p>Join teams who cut audit prep time by 50-70% with Aingran CCM.</p>
 						<div className="cta-actions">
-							<Link to="/contact" className="btn btn-primary btn-lg">
+							<a href="mailto:sales@aingran.com" className="btn btn-primary btn-lg">
 								Book a 30-minute Demo
 								<ArrowRight size={20} />
-							</Link>
-							<Link to="/pricing" className="btn btn-secondary btn-lg">
-								View Pricing
-							</Link>
+							</a>
+							<a href="#why-ccm" className="btn btn-secondary btn-lg">
+								Learn More
+							</a>
 						</div>
 					</div>
 				</div>
 			</section>
-		</div >
+		</div>
 	)
 }
 

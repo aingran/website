@@ -1,20 +1,29 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Menu, X, Shield } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import './Navbar.css'
 
 const navLinks = [
-	{ path: '/features', label: 'Features' },
-	{ path: '/solutions', label: 'Solutions' },
-	{ path: '/pricing', label: 'Pricing' },
-	{ path: '/integrations', label: 'Integrations' },
-	{ path: '/security', label: 'Security' },
+	{ path: '#challenges', label: 'Challenges' },
+	{ path: '#platform', label: 'Platform' },
+	{ path: '#how-it-works', label: 'How It Works' },
+	{ path: '#why-ccm', label: 'Why CCM' },
 ]
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false)
-	const location = useLocation()
+
+	const handleNavClick = (e, path) => {
+		if (path.startsWith('#')) {
+			e.preventDefault()
+			const element = document.getElementById(path.substring(1))
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth' })
+			}
+			setIsOpen(false)
+		}
+	}
 
 	return (
 		<nav className="navbar">
@@ -31,23 +40,23 @@ function Navbar() {
 					<ul className="navbar-links">
 						{navLinks.map((link) => (
 							<li key={link.path}>
-								<Link
-									to={link.path}
-									className={`navbar-link ${location.pathname === link.path ? 'active' : ''}`}
-									onClick={() => setIsOpen(false)}
+								<a
+									href={link.path}
+									className="navbar-link"
+									onClick={(e) => handleNavClick(e, link.path)}
 								>
 									{link.label}
-								</Link>
+								</a>
 							</li>
 						))}
 					</ul>
 					<div className="navbar-actions">
-						<Link to="/contact" className="btn btn-secondary" onClick={() => setIsOpen(false)}>
+						<a href="#contact" className="btn btn-secondary" onClick={(e) => handleNavClick(e, '#contact')}>
 							Get a Demo
-						</Link>
-						<Link to="/contact" className="btn btn-primary" onClick={() => setIsOpen(false)}>
-							Start Free
-						</Link>
+						</a>
+						<a href="mailto:sales@aingran.com" className="btn btn-primary" onClick={() => setIsOpen(false)}>
+							Contact Us
+						</a>
 						<ThemeToggle />
 					</div>
 				</div>
