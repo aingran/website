@@ -1448,3 +1448,59 @@
 		width: 24px;
 	}
 }
+
+/* Light Mode Mobile Adjustments */
+@media (max-width: 768px) {
+
+	:root[data-theme="light"] .assembly-station,
+	[data-theme="light"] .assembly-station {
+		background: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(99, 102, 241, 0.25);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	}
+
+	:root[data-theme="light"] .assembly-station:hover,
+	[data-theme="light"] .assembly-station:hover {
+		background: rgba(255, 255, 255, 0.95);
+		border-color: var(--station-color);
+		box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+	}
+
+	:root[data-theme="light"] .assembly-station.active,
+	[data-theme="light"] .assembly-station.active {
+		background: rgba(99, 102, 241, 0.08);
+		border-color: var(--station-color);
+		box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+	}
+
+	/* Improve S-curve path visibility in light mode */
+	:root[data-theme="light"] .mobile-s-curve-path,
+	[data-theme="light"] .mobile-s-curve-path {
+		opacity: 0.8;
+	}
+
+	:root[data-theme="light"] .s-curve-line,
+	[data-theme="light"] .s-curve-line {
+		stroke-width: 5;
+	}
+
+	:root[data-theme="light"] .path-particle,
+	[data-theme="light"] .path-particle {
+		filter: drop-shadow(0 0 10px currentColor);
+		opacity: 1;
+	}
+
+	/* Station label improvements for light mode */
+	:root[data-theme="light"] .assembly-station .station-label,
+	[data-theme="light"] .assembly-station .station-label {
+		background: rgba(255, 255, 255, 0.95);
+		border-color: rgba(99, 102, 241, 0.3);
+		color: var(--color-text-primary);
+	}
+
+	:root[data-theme="light"] .assembly-station.active .station-label,
+	[data-theme="light"] .assembly-station.active .station-label {
+		background: rgba(99, 102, 241, 0.1);
+		color: var(--station-color);
+	}
+}
