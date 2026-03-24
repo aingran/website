@@ -25,28 +25,25 @@ function Navbar() {
 		}
 	}
 
-	const handleBrandClick = (e) => {
-		e.preventDefault()
+	const handleBrandClick = () => {
 		// If on the home page, scroll to top
 		const heroElement = document.getElementById('hero')
 		if (heroElement) {
 			heroElement.scrollIntoView({ behavior: 'smooth' })
-		} else {
-			// Navigate to home and then scroll to top
-			window.location.href = '/'
 		}
+		setIsOpen(false)
 	}
 
 	return (
 		<nav className="navbar">
 			<div className="container navbar-container">
-				<a href="/" className="navbar-brand" onClick={handleBrandClick}>
+				<Link to="/" className="navbar-brand" onClick={handleBrandClick} aria-label="Aingran CCM Home">
 					<div className="navbar-logo">
-						<Shield size={28} />
+						<Shield size={28} aria-hidden="true" />
 					</div>
 					<span className="navbar-brand-text">Aingran</span>
 					<span className="navbar-product-badge">CCM</span>
-				</a>
+				</Link>
 
 				<div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
 					<ul className="navbar-links">
@@ -77,8 +74,9 @@ function Navbar() {
 					className="navbar-toggle"
 					onClick={() => setIsOpen(!isOpen)}
 					aria-label="Toggle menu"
+					aria-expanded={isOpen}
 				>
-					{isOpen ? <X size={24} /> : <Menu size={24} />}
+					{isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
 				</button>
 			</div>
 		</nav>

@@ -27,7 +27,7 @@ const ImageModal = ({ isOpen, onClose, imageSrc, altText }) => {
 		<div className="image-modal-overlay" onClick={onClose}>
 			<div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
 				<button className="image-modal-close" onClick={onClose} aria-label="Close modal">
-					<X size={32} />
+					<X size={32} aria-hidden="true" />
 				</button>
 				<img src={imageSrc} alt={altText} className="image-modal-img" />
 			</div>

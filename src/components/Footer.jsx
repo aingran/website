@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Shield, Linkedin, Twitter, Github, Mail } from 'lucide-react'
+import { Shield, Linkedin, X, Github, Mail } from 'lucide-react'
 import './Footer.css'
 
 const productLinks = [
@@ -41,9 +41,9 @@ function Footer() {
 			<div className="container">
 				<div className="footer-grid">
 					<div className="footer-brand">
-						<Link to="/" className="footer-logo">
+						<Link to="/" className="footer-logo" aria-label="Aingran CCM Home">
 							<div className="footer-logo-icon">
-								<Shield size={24} />
+								<Shield size={24} aria-hidden="true" />
 							</div>
 							<span>Aingran CCM</span>
 						</Link>
@@ -52,17 +52,39 @@ function Footer() {
 							catch violations, and pass audits faster.
 						</p>
 						<div className="footer-social">
-							<a href="#" className="social-link" aria-label="LinkedIn">
-								<Linkedin size={20} />
+							<a 
+								href="https://linkedin.com/company/aingran" 
+								className="social-link" 
+								aria-label="LinkedIn"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<Linkedin size={20} aria-hidden="true" />
 							</a>
-							<a href="#" className="social-link" aria-label="Twitter">
-								<Twitter size={20} />
+							<a 
+								href="https://x.com/aingran" 
+								className="social-link" 
+								aria-label="X (formerly Twitter)"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<X size={20} aria-hidden="true" />
 							</a>
-							<a href="#" className="social-link" aria-label="GitHub">
-								<Github size={20} />
+							<a 
+								href="https://github.com/aingran" 
+								className="social-link" 
+								aria-label="GitHub"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<Github size={20} aria-hidden="true" />
 							</a>
-							<a href="mailto:sales@aingran.com" className="social-link" aria-label="Email">
-								<Mail size={20} />
+							<a 
+								href="mailto:sales@aingran.com" 
+								className="social-link" 
+								aria-label="Email"
+							>
+								<Mail size={20} aria-hidden="true" />
 							</a>
 						</div>
 					</div>

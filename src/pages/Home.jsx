@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Rocket } from 'lucide-react'
 import Testimonial from '../components/Testimonial'
 import dashboardDark from '../assets/images/dashboard.png'
 import dashboardLight from '../assets/images/dashboard_light.png'
@@ -32,7 +32,10 @@ function Home() {
 				<div className="container">
 					<div className="hero-content">
 						<div className="hero-badge">
-							<span className="badge">🚀 Modern Compliance Platform</span>
+							<span className="badge">
+								<Rocket size={14} aria-hidden="true" />
+								Modern Compliance Platform
+							</span>
 						</div>
 						<h1 className="hero-title">
 							Continuous Controls Monitoring — from periodic checks to continuous enterprise assurance
@@ -43,7 +46,7 @@ function Home() {
 						<div className="hero-actions">
 							<a href="#contact" className="btn btn-primary btn-lg">
 								Request a Demo
-								<ArrowRight size={20} />
+								<ArrowRight size={20} aria-hidden="true" />
 							</a>
 							<a href="#platform" className="btn btn-secondary btn-lg">
 								Explore the Platform
@@ -120,7 +123,7 @@ function Home() {
 						<div className="cta-actions">
 							<a href="mailto:sales@aingran.com" className="btn btn-primary btn-lg">
 								Book a 30-minute Demo
-								<ArrowRight size={20} />
+								<ArrowRight size={20} aria-hidden="true" />
 							</a>
 							<a href="#why-ccm" className="btn btn-secondary btn-lg">
 								Learn More
